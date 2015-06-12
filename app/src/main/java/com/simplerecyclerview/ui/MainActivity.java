@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.Toast;
 
 import com.simplerecyclerview.R;
 import com.simplerecyclerview.model.Film;
@@ -70,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteFilm(View view) {
-        films.remove(0);
-        filmsAdapter.notifyItemRemoved(0);
+        if(!films.isEmpty()){
+            films.remove(0);
+            filmsAdapter.notifyItemRemoved(0);
+        }else {
+            Toast.makeText(getApplicationContext(),"List is empty", Toast.LENGTH_LONG).show();
+        }
     }
 }
